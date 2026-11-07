@@ -12,8 +12,6 @@ plugins.withType<JavaPlugin> {
 dependencies {
     api(project(":common"))
 
-    paper(libs.versions.paper.api.get())
-
     compileOnlyApiLibrary(libs.bundles.paper.loaded)
     compileOnlyApiLibrary(libs.bundles.common.loaded)
 
