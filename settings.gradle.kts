@@ -18,7 +18,6 @@ rootProject.name = "Trashcan"
 
 include(
     "dumpster-common",
-    "dumpster-hikari", 
     "dumpster-mongo"
 )
 include("common", "paper")
