@@ -1,9 +1,4 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import info.preva1l.trashcan.paper
-
-plugins {
-    alias(libs.plugins.trashcan)
-}
 
 val compileOnlyApiLibrary = configurations.maybeCreate("compileOnlyApiLibrary")
 
@@ -12,10 +7,6 @@ plugins.withType<JavaPlugin> {
         configurations.compileOnlyApi.get().extendsFrom(compileOnlyApiLibrary)
         configurations.library.get().extendsFrom(compileOnlyApiLibrary)
     }
-}
-
-trashcan {
-    librariesFileName = "trashcan-libraries.json"
 }
 
 dependencies {
