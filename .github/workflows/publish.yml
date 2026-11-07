@@ -28,6 +28,9 @@ jobs:
       - name: Fix Gradle Permissions
         run: chmod +x ./gradlew
 
+      - name: Publish
+        run: gradle publish
+
       - name: Build with Gradle Wrapper
         env:
           fad_username: ${{ secrets.REPO_USERNAME }}
