@@ -1,9 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
-plugins {
-    alias(libs.plugins.trashcan)
-}
-
 val compileOnlyApiLibrary = configurations.maybeCreate("compileOnlyApiLibrary")
 
 plugins.withType<JavaPlugin> {
