@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.gradle)
     `kotlin-dsl`
+    id(`maven-publish`)
 }
 
 repositories {
@@ -43,19 +44,9 @@ tasks {
 }
 
 publishing {
-    repositories {
-        mavenLocal()
-        val user = properties["fad_username"]?.toString() ?: System.getenv("fad_username")
-        val pass = properties["fad_password"]?.toString() ?: System.getenv("fad_password")
-
-        maven("https://repo.preva1l.info/releases/") {
-            name = "FinallyADecent"
-            if (user != null && pass != null) {
-                credentials {
-                    username = user
-                    password = pass
-                }
-            }
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])          
         }
     }
 }
