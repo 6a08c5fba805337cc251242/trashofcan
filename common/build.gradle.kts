@@ -12,8 +12,7 @@ dependencies {
     api(libs.bundles.common.included)
 }
 
-afterEvaluate {
-    publishing {
+publishing {
         publications {
             register<MavenPublication>("release") {
                 from(components["java"])
@@ -22,5 +21,5 @@ afterEvaluate {
                 artifactId = "canoftrash"
                 version = "1.0.0" 
             }
-        }
-    }
+}
+
