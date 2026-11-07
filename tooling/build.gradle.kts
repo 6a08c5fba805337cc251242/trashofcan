@@ -44,18 +44,18 @@ tasks {
 
 publishing {
     repositories {
-        mavenLocal()
-        val user = properties["fad_username"]?.toString() ?: System.getenv("fad_username")
-        val pass = properties["fad_password"]?.toString() ?: System.getenv("fad_password")
-
-        maven("https://repo.preva1l.info/releases/") {
-            name = "FinallyADecent"
-            if (user != null && pass != null) {
-                credentials {
-                    username = user
-                    password = pass
-                }
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/6a08c5fba805337cc251242/trashofcan")
+            credentials {
+                username = providers.gradleProperty("gpr.user").getOrNull() ?: System.getenv("USERNAME")
+                password = providers.gradleProperty("gpr.key").getOrNull() ?: System.getenv("TOKEN")
             }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
         }
     }
 }
